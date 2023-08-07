@@ -2,6 +2,18 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
+
+def profile(request):
+    user = request.user
+    return render(request, "profile.html", {"user": user})
+
+
+@login_required
+def main(request):
+    user = request.user
+    return render(request, "main.html", {"user": user})
 
 def signup(request):
     if request.method == 'POST':
@@ -24,3 +36,7 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})
+
+def logout_view(request):
+    logout(request)
+    return redirect("login")  # Redirect to the desired page after logout

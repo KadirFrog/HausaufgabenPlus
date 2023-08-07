@@ -1,0 +1,26 @@
+/* Apply background color to the entire page */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0; /* Replace with your desired background color */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes up at least the full viewport height */
+}
+
+/* Lock footer at the bottom of the screen */
+.container {
+  flex: 1; /* Allow the content area to take up remaining space */
+  margin-bottom: auto; /* Push content to the top of the container */
+}
+
+footer {
+  background-color: #333; /* Footer background color */
+  color: #fff; /* Footer text color */
+  padding: 10px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 10%; /* Set the height to half the viewport height */
+  box-sizing: border-box; /* Include padding in the width */
+}

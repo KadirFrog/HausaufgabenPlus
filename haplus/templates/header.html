@@ -1,0 +1,18 @@
+{% load static %}
+
+<header>
+    <link rel="stylesheet" type="text/css" href="{% static 'headercss.css' %}">
+  <nav>
+    <ul>
+        {% if user.is_authenticated %}
+        <!-- If user is logged in, show profile and logout links -->
+        <li><a href="">Profile</a></li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+      {% else %}
+        <!-- If user is not logged in, show login link -->
+        <li><a href="{% url 'login' %}">Login</a></li>
+      {% endif %}
+      
+    </ul>
+  </nav>
+</header>

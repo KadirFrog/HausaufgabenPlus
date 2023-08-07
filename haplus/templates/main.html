@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'maincss.css' %}">
+    <title>Hausaufgaben+</title>
+</head>
+{% block content %}
+  {% include 'header.html' %}
+<body>
+    <center>
+    <h1>Hausaufgaben+</h1>
+    <h3>Willkommen, {{ user.username }}</h3>
+    </center>
+</body>
+
+<footer>
+    <center>
+    <p>Erstellt von Kadir Aras Yanar<br><strong>Copyright </strong>Kadir Aras Yanar</p>
+    </center>
+</footer>
+{% endblock %}
+</html>
