@@ -8,6 +8,6 @@ class User(AbstractUser):
     telephone_number = models.CharField(max_length=15, blank=True)
     
     # Add related_name attributes to avoid clashes
-    groups = models.ManyToManyField(Group, related_name='custom_users')
-    user_permissions = models.ManyToManyField(Permission, related_name='custom_users')
+    groups = models.ManyToManyField(Group, related_name='users')
+    user_permissions = models.ManyToManyField(Permission, related_name='users')
 

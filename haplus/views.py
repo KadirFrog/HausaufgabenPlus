@@ -5,6 +5,7 @@ from .forms import CustomUserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 
+@login_required
 def profile(request):
     user = request.user
     return render(request, "profile.html", {"user": user})
