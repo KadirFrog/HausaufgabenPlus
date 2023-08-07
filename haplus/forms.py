@@ -2,7 +2,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django import forms
 
-class CustomUserCreationForm(UserCreationForm):
+class UserCreationForm(UserCreationForm):
     school_class = forms.CharField(max_length=10)
     telephone_number = forms.CharField(max_length=15)
     
