@@ -6,6 +6,7 @@ from django.contrib.auth import logout
 from .forms import CustomRegistrationForm, CustomAuthenticationForm, PostForm
 from haplus.models import Post
 from .forms import CustomRegistrationForm
+from .models import CustomUser
 
 @login_required
 def profile(request):
@@ -13,8 +14,9 @@ def profile(request):
 
 @login_required
 def main(request):
-    posts = Post.objects.all().order_by('deadline')
-    return render(request, 'main.html', {'posts': posts})
+    user = request.user
+    posts = Post.objects.filter(klasse=user.school_class)
+    return render(request, 'main.html', {'posts': posts, 'user': user})
 
 @login_required
 def create_post(request):

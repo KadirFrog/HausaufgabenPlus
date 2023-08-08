@@ -1,11 +1,50 @@
-{% extends 'base.html' %}
 
-{% block content %}
-    <h1>Create New Post</h1>
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Hausaufgabe hochladen</button>
-    </form>
-    <a href="{% url 'home' %}">Zurück zu Homepage</a>
-{% endblock %}
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'maincss.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'login.css' %}">
+    <script src="{% static 'mainjs.js' %}"></script>
+    <title>Create Post - Hausaufgaben+</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Create a New Post</h1>
+        </div>
+        <div class="content">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="{{ form.title.id_for_label }}">Titel:</label>
+                    {{ form.title }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.klasse.id_for_label }}">Klasse:</label>
+                    {{ form.klasse }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.content.id_for_label }}">Beschreibung:</label><br>
+                    {{ form.content }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.image.id_for_label }}">Bild hochladen:</label>
+                    {{ form.image }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.deadline.id_for_label }}">Abgabe-/ Vorzeigetermin:</label>
+                    {{ form.deadline }}
+                </div>
+                <center>
+                    <button type="submit">Hausaufgabe posten</button>
+                </center>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

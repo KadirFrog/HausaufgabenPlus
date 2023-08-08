@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}" >
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'maincss.css' %}">
@@ -19,6 +19,7 @@
     </center>
     <ul>
         {% for post in posts %}
+            {% if post.klasse == user.school_class %}
             <li>
                 <h2>{{ post.title }}</h2>
                 <p>{{ post.content }}</p>
@@ -27,6 +28,7 @@
                 {% endif %}
                 <p>Deadline: {{ post.deadline }}</p>
             </li>
+            {% endif %}
         {% endfor %}
     </ul>
 </body>

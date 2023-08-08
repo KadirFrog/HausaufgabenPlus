@@ -14,6 +14,7 @@ class CustomUser(AbstractUser):
 class Post(models.Model):
     title = models.CharField(max_length=100)
     content = models.TextField()
+    klasse = models.CharField(max_length=2)
     image = models.ImageField(upload_to='post_images/', blank=True, null=True)
     deadline = models.DateTimeField()
 
