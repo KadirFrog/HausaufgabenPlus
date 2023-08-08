@@ -1,10 +1,13 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
   <h2>Einen Account bei Hausaufgaben+ erstellen</h2>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Account erstellen</button>
   </form>
+  <br>
+  <p>Haben sie schon einen Account? </p><a href="{% url 'login' %}"><button>Anmelden</button></a>
 {% endblock %}

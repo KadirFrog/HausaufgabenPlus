@@ -127,6 +127,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = 'haplus.CustomUser'  # Replace 'yourapp' with the actual app name
+
+
 INTERNAL_IPS = [ #IPs where the debug toolbar will be shown
     # ...
     "127.0.0.1",
