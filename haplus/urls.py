@@ -7,7 +7,8 @@ urlpatterns = [
     path("", views.main),
     path('logout/', views.logout_view, name='logout'),
     path("profile", views.profile, name="profile"),
-    path("home", views.main, name="home")
+    path("home", views.main, name="home"),
+    path('create/', views.create_post, name='create'),
     # Add logout and profile URL patterns as needed
 ]
 

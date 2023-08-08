@@ -2,9 +2,9 @@
 {% block content %}
   {% include 'header.html' %}
 
-  <h2>Welcome, {{ user.username }}!</h2>
-  <p>School Class: {{ user.school_class }}</p>
-  <p>Telephone Number: {{ user.telephone_number }}</p>
+  <h2>Wilkommen, {{ user.username }}!</h2>
+  <p>Klasse: {{ user.school_class }}</p>
+  <p>Telefonnummer: {{ user.telephone_number }}</p>
   <!-- Add more user data as needed -->
 
   <a href="{% url 'logout' %}">Logout</a>

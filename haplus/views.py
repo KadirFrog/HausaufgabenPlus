@@ -3,6 +3,8 @@ from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from .forms import CustomRegistrationForm, CustomAuthenticationForm, PostForm
+from haplus.models import Post
 from .forms import CustomRegistrationForm
 
 @login_required
@@ -11,9 +13,22 @@ def profile(request):
 
 @login_required
 def main(request):
-    return render(request, "main.html")
+    posts = Post.objects.all().order_by('deadline')
+    return render(request, 'main.html', {'posts': posts})
 
-from .forms import CustomRegistrationForm, CustomAuthenticationForm
+@login_required
+def create_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST, request.FILES)
+        if form.is_valid():
+            post = form.save()
+            # Handle successful form submission
+            return redirect('home')  # Redirect to the home page
+    else:
+        form = PostForm()
+    
+    return render(request, 'create_post.html', {'form': form})
+
 
 def signup(request):
     if request.method == 'POST':

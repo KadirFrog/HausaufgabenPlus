@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{% static 'maincss.css' %}">
+    <script src="{% static 'mainjs.js' %}"></script>
     <title>Hausaufgaben+</title>
 </head>
 {% block content %}
@@ -13,7 +14,20 @@
     <center>
     <h1>Hausaufgaben+</h1>
     <h3>Aber hallo, {{ user.username }}!</h3>
+    <a href="{% url 'create' %}"><button>Hausaufgabe hinzufügen</button></a>
     </center>
+    <ul>
+        {% for post in posts %}
+            <li>
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+                {% if post.image %}
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}" width="200">
+                {% endif %}
+                <p>Deadline: {{ post.deadline }}</p>
+            </li>
+        {% endfor %}
+    </ul>
 </body>
 
 <footer>

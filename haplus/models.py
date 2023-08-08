@@ -11,3 +11,11 @@ class CustomUser(AbstractUser):
     groups = models.ManyToManyField(Group, related_name='users')
     user_permissions = models.ManyToManyField(Permission, related_name='users')
 
+class Post(models.Model):
+    title = models.CharField(max_length=100)
+    content = models.TextField()
+    image = models.ImageField(upload_to='post_images/', blank=True, null=True)
+    deadline = models.DateTimeField()
+
+    def __str__(self):
+        return self.title

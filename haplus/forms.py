@@ -1,7 +1,7 @@
 from multiprocessing import AuthenticationError
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import CustomUser
+from .models import CustomUser, Post
 from django.contrib.auth.forms import AuthenticationForm
 
 class CustomRegistrationForm(UserCreationForm):
@@ -15,3 +15,9 @@ class CustomRegistrationForm(UserCreationForm):
 class CustomAuthenticationForm(AuthenticationForm):
     class Meta:
         model = CustomUser  # Use CustomUser model
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'content', 'image', 'deadline']
+        deadline = forms.DateField(widget=forms.TextInput(attrs={'type': 'date'}))
