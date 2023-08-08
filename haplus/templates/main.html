@@ -15,7 +15,11 @@
     <center>
     <h1>Hausaufgaben+</h1>
     <h3>Aber hallo, {{ user.username }}!</h3>
+    {% if user.can_post == 1 %}
     <a href="{% url 'create' %}"><button>Hausaufgabe hinzufügen</button></a>
+    {% else %}
+    <p>Ihr Recht Hausaufgaben zu posten wurde Ihnen entzogen.</p>
+    {% endif %}
     </center>
     <ul>
         {% for post in posts %}
