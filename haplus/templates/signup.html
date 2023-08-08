@@ -1,13 +1,18 @@
-{% extends 'base.html' %}
 
-{% block content %}
-
-  <h2>Einen Account bei Hausaufgaben+ erstellen</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Account erstellen</button>
-  </form>
-  <br>
-  <p>Haben sie schon einen Account? </p><a href="{% url 'login' %}"><button>Anmelden</button></a>
-{% endblock %}
+<form method="post">
+  <h2>Bei Hausaufgaben+ registrieren</h2>
+  {% csrf_token %}
+  {{ form.username.label_tag }}<br>
+  {{ form.username }}<br>
+  {{ form.school_class.label_tag }}<br>
+  {{ form.school_class }}<br>
+  {{ form.telephone_number.label_tag }}<br>
+  {{ form.telephone_number }}<br>
+  {{ form.password1.label_tag }}<br>
+  {{ form.password1 }}<br>
+  {{ form.password2.label_tag }}<br>
+  {{ form.password2 }}<br><br>
+  <button type="submit">Account Erstellen</button>
+</form>
+<br>
+<p>Haben sie schon einnen Account?</p><a href="{% url 'login' %}"><button>Anmelden</button></a>

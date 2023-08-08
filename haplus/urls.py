@@ -10,3 +10,5 @@ urlpatterns = [
     path("home", views.main, name="home")
     # Add logout and profile URL patterns as needed
 ]
+
+handler404 = 'haplus.views.custom_404'

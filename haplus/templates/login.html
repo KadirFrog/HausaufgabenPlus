@@ -1,13 +1,14 @@
-{% extends 'base.html' %}
 
-{% block content %}
-
+<form method="post">
   <h2>Bei Hausaufgaben+ anmelden</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Anmelden</button>
-  </form>
+  {% csrf_token %}
+  {{ form.username.label_tag }}
+  {{ form.username }}
+  {{ form.password.label_tag }}
+  {{ form.password }}
+  <button type="submit">Anmelden</button>
+</form>
+
   <br>
   <p>Haben sie noch keinen Account? </p><a href="{% url 'signup' %}"><button>Einenen Account erstellen</button></a>
-{% endblock %}
+
