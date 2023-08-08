@@ -1,23 +1,22 @@
-{% load static %}
+{% load static %} <!-- Add this line at the top of your template -->
 
 <header>
     <link rel="stylesheet" type="text/css" href="{% static 'headercss.css' %}">
-  <nav>
-    <ul>
-        {% if user.is_authenticated %}
-        <!-- If user is logged in, show profile and logout links -->
-        <li><a href="{% url 'profile' %}">Profil</a></li>
-        <li><a href="{% url 'logout' %}">Abmelden</a></li>
-        <li><a href="{% url 'home' %}">Home</a></li>
-        {% if user.is_staff %}
-        <li><a href="">Admin Interface</a></li>
-        {% endif %}
-      {% else %}
-        <!-- If user is not logged in, show login link -->
-        <li><a href="{% url 'login' %}">Anmelden</a></li>
-        <li><a href="{% url 'signup' %}">Account erstellen</a></li>
-      {% endif %}
-      
-    </ul>
-  </nav>
+    <nav>
+        <ul>
+            {% if user.is_authenticated %}
+            <!-- If user is logged in, show profile and logout links -->
+            <li><a href="{% url 'profile' %}">Profil</a></li>
+            <li><a href="{% url 'logout' %}">Abmelden</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            {% if user.is_staff %}
+            <li><a href="{% url 'admin:index' %}">Admin Interface</a></li>
+            {% endif %}
+            {% else %}
+            <!-- If user is not logged in, show login link -->
+            <li><a href="{% url 'login' %}">Anmelden</a></li>
+            <li><a href="{% url 'signup' %}">Account erstellen</a></li>
+            {% endif %}
+        </ul>
+    </nav>
 </header>
