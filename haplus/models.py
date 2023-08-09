@@ -8,6 +8,8 @@ class CustomUser(AbstractUser):
     school_class = models.CharField(max_length=10, blank=True)
     telephone_number = models.CharField(max_length=15, blank=True)
     can_post = models.DecimalField(max_digits=1, decimal_places=0, default=1)
+    is_teacher = models.DecimalField(max_digits=1, decimal_places=0, default=0)
+    is_verified = models.DecimalField(max_digits=1, decimal_places=0, default=0)
     
     # Add related_name attributes to avoid clashes
     groups = models.ManyToManyField(Group, related_name='users')
@@ -22,6 +24,15 @@ class Post(models.Model):
     image = models.ImageField(upload_to='post_images/', blank=True, null=True)
     deadline = models.DateTimeField()
     ersteller = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='posts')
+    teacher = models.DecimalField(max_digits=1, decimal_places=0, default=0)
+    verified = models.DecimalField(max_digits=1, decimal_places=0, default=0)
 
     def __str__(self):
         return self.title
+
+    @property
+    def teacher(self):
+        return self.ersteller.is_teacher
+    @property
+    def verified(self):
+        return self.ersteller.is_verified

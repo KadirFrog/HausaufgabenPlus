@@ -51,15 +51,18 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 def login_view(request):
+    user = request.user
+    if request.user.is_authenticated:
+        return redirect("home")
     if request.method == 'POST':
         form = CustomAuthenticationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
-            login(request, user)
+            login(request, user)  # This is the line causing the error
             return redirect('profile')
     else:
         form = CustomAuthenticationForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'login.html', {'form': form, "user": user})
 
 
 def logout_view(request):

@@ -7,6 +7,10 @@
   <p>Telefonnummer: {{ user.telephone_number }}</p>
   {% if user.is_staff == 1 %}
   <p>Privilegien: Admin</p>
+  {% elif user.is_teacher == 1 %}
+  <p>Privilegien: Sie sind eine Lehrkraft und haben "admin Rechte" über Schüler-Accounts; Ihre Posts werden als "von einer Lehrkraft" angezeigt.</p>
+  {% elif user.is_verified == 1 %}
+  <p>Privilegien: Die Hausaufgaben die Sie posten werden als "verifiziert" angezeigt.</p>
   {% elif user.can_post == 1 %}
   <p>Privilegien: Sie dürfen Hausaufgaben posten.</p>
   {% else %}

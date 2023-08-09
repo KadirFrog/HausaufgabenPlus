@@ -29,12 +29,18 @@
         {% for post in posts %}
             {% if post.klasse == user.school_class %}
             <li>
+                {% if post.teacher == 1 %}
+                <h3>Von einer Lehrkraft!</h3>
+                {% elif post.verified == 1 %}
+                <h3>Von verifizerter Nutzer</h3>
+                {% endif %}
                 <h2>{{ post.title }}</h2>
                 <p>{{ post.content }}</p>
                 {% if post.image %}
                     <img src="{{ post.image.url }}" alt="{{ post.title }}" width="200">
                 {% endif %}
-                <p>Deadline: {{ post.deadline }}</p>
+                <p>Abgabe/Vorzeigtermin: {{ post.deadline }}</p>
+                <p>Author: {{ post.ersteller }}</p>
             </li>
             {% endif %}
         {% endfor %}
