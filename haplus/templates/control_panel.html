@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    {% block content %}
+  {% include 'header.html' %}
+<head>
+    <title>Control Panel</title>
+</head>
+<body>
+    <h1>Lehrkraft-Controlpanel</h1>
+    
+    {% if is_teacher %}
+    <table>
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Telefonnummer</th>
+                <th>Privilegien</th>
+                <!-- Add more fields as needed -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr>
+                <td>{{ user.username }}</td>
+                <td>{{ user.telephone_number }}</td>
+                <td>{% if user.is_staff == 1 %}
+                    <p>Admin</p>
+                    {% elif user.is_teacher == 1 %}
+                    <p>Sie sind eine Lehrkraft und haben "admin Rechte" über Schüler-Accounts; Ihre Posts werden als "von einer Lehrkraft" angezeigt.</p>
+                    {% elif user.is_verified == 1 %}
+                    <p>Die Hausaufgaben die der Nutzer postet werden als "verifiziert" angezeigt.</p>
+                    {% elif user.can_post == 1 %}
+                    <p>Der Nutzer darf Hausaufgaben posten.</p>
+                    {% else %}
+                    <p>Wegen Missbrauch darf der Nutzer keine Hausaufgaben posten.</p>
+                    {% endif %}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>You don't have access to this page.</p>
+    {% endif %}
+</body>
+{% endblock %}
+</html>

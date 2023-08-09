@@ -12,6 +12,9 @@
             {% if user.is_staff %}
             <li><a href="{% url 'admin:index' %}">Admin Interface</a></li>
             {% endif %}
+            {% if user.is_teacher == 1 or user.is_staff == 1 %}
+            <li><a href="{% url 'control_panel' %}">Lehrerpanel</a></li>
+            {% endif %}
             {% else %}
             <!-- If user is not logged in, show login link -->
             <li><a href="{% url 'login' %}">Anmelden</a></li>

@@ -74,3 +74,17 @@ def custom_404(request, exception):
 
 def lehrerinfo(request):
     return render(request, "lehrerinfo.html")
+
+@login_required
+def control_panel(request):
+    if request.user.is_teacher:
+        # Get all users who are not admin
+        users = CustomUser.objects.filter(is_superuser=False)
+
+        context = {
+            'users': users,
+            'is_teacher': True  # To identify that the user is a teacher
+        }
+        return render(request, 'control_panel.html', context)
+    else:
+        return redirect('home')  # Redirect to some other page if not a teacher
