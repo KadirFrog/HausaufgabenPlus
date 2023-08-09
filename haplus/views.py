@@ -68,3 +68,6 @@ def logout_view(request):
 
 def custom_404(request, exception):
     return render(request, 'login.html', status=404)
+
+def lehrerinfo(request):
+    return render(request, "lehrerinfo.html")
