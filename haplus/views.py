@@ -10,13 +10,16 @@ from .models import CustomUser
 
 @login_required
 def profile(request):
-    return render(request, "profile.html")
+    device = request.META.get('HTTP_USER_AGENT', '').lower()
+    user = request.user
+    return render(request, "profile.html", {"device": device, "user": user})
 
 @login_required
 def main(request):
     user = request.user
     posts = Post.objects.filter(klasse=user.school_class)
-    return render(request, 'main.html', {'posts': posts, 'user': user})
+    device = request.META.get('HTTP_USER_AGENT', '').lower()
+    return render(request, 'main.html', {'posts': posts, 'user': user, 'device': device})
 
 @login_required  # Ensures that the user is logged in to access this view
 def create_post(request):

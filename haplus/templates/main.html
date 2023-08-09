@@ -8,20 +8,24 @@
     <link rel="stylesheet" type="text/css" href="{% static 'maincss.css' %}">
     <script src="{% static 'mainjs.js' %}"></script>
     <title>Hausaufgaben+</title>
+    {% if device != "mobile" %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    {% endif %}
 </head>
 {% block content %}
   {% include 'header.html' %}
 <body>
     <center>
-    <h1>Hausaufgaben+</h1>
-    <h3>Aber hallo, {{ user.username }}!</h3>
+    <h1 class="animate__animated animate__backInDown animate_faster">Hausaufgaben+</h1>
+    <h3 class="animate__animated animate__zoomIn">Aber hallo, {{ user.username }}!</h3>
+
     {% if user.can_post == 1 %}
-    <a href="{% url 'create' %}"><button>Hausaufgabe hinzufügen</button></a>
+    <a href="{% url 'create' %}"><button class="animate__animated animate__rollIn animate__delay-2s">Hausaufgabe hinzufügen</button></a>
     {% else %}
     <p>Ihr Recht Hausaufgaben zu posten wurde Ihnen entzogen.</p>
     {% endif %}
     </center>
-    <ul>
+    <ul class="animate__animated animate__rollIn animate__delay-2s">
         {% for post in posts %}
             {% if post.klasse == user.school_class %}
             <li>
@@ -35,12 +39,16 @@
             {% endif %}
         {% endfor %}
     </ul>
-</body>
 
+</body>
+{% if device != "mobile" %}
 <footer>
     <center>
     <p>Erstellt von Kadir Aras Yanar<br><strong>Copyright </strong>Kadir Aras Yanar</p>
     </center>
 </footer>
+{% else %}
+<p>Erstellt von / Copyright Kadir Aras Yanar</p>
+{% endif %}
 {% endblock %}
 </html>
