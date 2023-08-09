@@ -1,7 +1,8 @@
-
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'headercss.css' %}">
 {% block content %}
   {% include 'header.html' %}
-
+  
   <h2>Wilkommen, {{ user.username }}!</h2>
   <p>Klasse: {{ user.school_class }}</p>
   <p>Telefonnummer: {{ user.telephone_number }}</p>

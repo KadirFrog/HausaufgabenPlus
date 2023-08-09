@@ -1,9 +1,10 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html>{% load static %}
+<html><link rel="stylesheet" type="text/css" href="{% static 'headercss.css' %}">
     {% block content %}
   {% include 'header.html' %}
 <head>
     <title>Control Panel</title>
+    
 </head>
 <body>
     <h1>Lehrkraft-Controlpanel</h1>
