@@ -18,18 +18,22 @@ def main(request):
     posts = Post.objects.filter(klasse=user.school_class)
     return render(request, 'main.html', {'posts': posts, 'user': user})
 
-@login_required
+@login_required  # Ensures that the user is logged in to access this view
 def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            post = form.save()
-            # Handle successful form submission
-            return redirect('home')  # Redirect to the home page
+            post = form.save(commit=False)  # Create a Post instance without saving to the database yet
+            post.ersteller = request.user  # Set the ersteller field to the current logged-in user
+            post.save()  # Now save the Post instance with the ersteller information
+            return redirect('home')  # Replace 'post_list' with the name of your post list view
+
     else:
         form = PostForm()
-    
-    return render(request, 'create_post.html', {'form': form})
+
+    context = {'form': form}
+    return render(request, 'create_post.html', context)
+
 
 
 def signup(request):
