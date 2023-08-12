@@ -8,11 +8,16 @@ WORKDIR /app
 RUN pip install pipenv
 RUN pipenv install django
 RUN pip install django
+RUN pipenv install django-debug-toolbar
+RUN pip install django-debug-toolbar
+RUN pip install pillow
+RUN pipenv install pillow
+
 
 # Copy the Pipfile and Pipfile.lock into the container
 COPY Pipfile Pipfile.lock /app/
 COPY manage.py /app/
-
+COPY . /app/
 # Install dependencies using pipenv
 RUN pipenv install --deploy --ignore-pipfile
 
