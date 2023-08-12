@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./HausaufgabenPlus:/app/HausaufgabenPlus
+    ports:
+      - "8000:8000"
+    environment:
+      DJANGO_SETTINGS_MODULE: HausaufgabenPlus.settings
+      DATABASE_URL: sqlite:////app/db.sqlite3
