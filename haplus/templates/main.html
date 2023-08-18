@@ -20,7 +20,7 @@
     <h3 class="animate__animated animate__zoomIn">Aber hallo, {{ user.username }}!</h3>
 
     {% if user.can_post == 1 %}
-    <a href="{% url 'create' %}"><button class="animate__animated animate__rollIn animate__delay-2s">Hausaufgabe hinzufügen</button></a>
+    <a href="{% url 'create' %}" class=""><button class="box-button animate__animated animate__rollIn animate__delay-2s">Hausaufgabe hinzufügen</button></a>
     {% else %}
     <p>Ihr Recht Hausaufgaben zu posten wurde Ihnen entzogen.</p>
     {% endif %}
@@ -42,6 +42,7 @@
                 <p>Abgabe/Vorzeigtermin: {{ post.deadline }}</p>
                 <p>Author: {{ post.ersteller }}</p>
             </li>
+            <br>
             {% endif %}
         {% endfor %}
     </ul>
@@ -50,7 +51,7 @@
 {% if device != "mobile" %}
 <footer>
     <center>
-    <p>Erstellt von Kadir Aras Yanar<br><strong>Copyright </strong>Kadir Aras Yanar</p>
+    <p>Erstellt von / <strong>Copyright </strong>Kadir Aras Yanar</p>
     </center>
 </footer>
 {% else %}
