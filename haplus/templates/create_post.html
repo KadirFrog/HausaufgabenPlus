@@ -40,9 +40,10 @@
                 <div class="form-group">
                     <label for="{{ form.deadline.id_for_label }}">Abgabe-/ Vorzeigetermin:</label>
                     {{ form.deadline }}
+                    <p>Format: Tag.Monat.Jahr (01.01.2023 nicht 1.1.23 oder ähnliches!)</p>
                 </div>
                 <center>
-                    <button type="submit" class="box-button">Hausaufgabe posten</button>
+                    <button type="submit" class="box-button">Hausaufgabe posten!</button>
                 </center>
             </form>
         </div>
@@ -50,6 +51,6 @@
     {% else %}
     <p>Sie dürfen keine Hausaufgaben posten.</p>
     {% endif %}
-    <li><a href="{% url 'home' %}">Zurück zu Homepage</a></li>
+    <li><a href="{% url 'home' %}" style="color: aliceblue;">Zurück zu Homepage</a></li>
 </body>
 </html>

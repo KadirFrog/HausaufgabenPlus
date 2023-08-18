@@ -1,31 +1,35 @@
 /* Style the navigation bar */
 nav {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-  }
-  
-  /* Position the login button at the top right corner */
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-end; /* Align items to the right */
-  }
-  
-  nav li {
-    margin-left: 10px;
-  }
-  
-  /* Style the login button */
-  nav a {
-    color: #fff;
-    text-decoration: none;
-  }
-  
-  /* Hover effect for the login button */
-  nav a:hover {
-    text-decoration: underline;
-  }
-  
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+}
+
+/* Position the login button at the top right corner */
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+}
+
+nav li {
+  margin-left: 10px;
+}
+
+/* Style the login button */
+nav a {
+  color: #fff;
+  text-decoration: none;
+  background-image: linear-gradient(49deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+  background-clip: text; /* Apply the gradient to the text */
+  -webkit-background-clip: text; /* For Safari compatibility */
+  transition: background-position 0.3s, color 0.3s; /* Add transition effects */
+}
+
+/* Hover effect for the login button */
+nav a:hover {
+  background-position: 100% 0; /* Move the background gradient to reveal the colors */
+  color: transparent; /* Hide the original text color */
+}
