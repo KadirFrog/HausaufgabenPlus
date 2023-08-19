@@ -1,6 +1,7 @@
 <!DOCTYPE html>{% load static %}
 <html><link rel="stylesheet" type="text/css" href="{% static 'headercss.css' %}">
 <link rel="stylesheet" type="text/css" href="{% static 'maincss.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'animate.css' %}">
     {% block content %}
   {% include 'header.html' %}
 <head>
@@ -8,7 +9,7 @@
     
 </head>
 <body>
-    <h1>Lehrkraft-Controlpanel</h1>
+    <h1 class="animate__animated animate__fadeInLeft">Lehrkraft-Controlpanel</h1>
     
     {% if is_teacher %}
     <table>
