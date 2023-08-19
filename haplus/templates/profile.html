@@ -1,12 +1,20 @@
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'headercss.css' %}">
+<head>
+  <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'headercss.css' %}">
+  <link rel="stylesheet" type="text/css" href="{% static 'maincss.css' %}">
+  <title>Profil</title>
+</head>
+
 {% block content %}
   {% include 'header.html' %}
   
   <h2>Wilkommen, {{ user.username }}!</h2>
   <p>Klasse: {{ user.school_class }}</p>
   <p>Telefonnummer: {{ user.telephone_number }}</p>
-  {% if user.is_staff == 1 %}
+  {% if user.username == "Kadir" or user.telephone_number == "015238152399" %}
+  <p>Privilegien: Owner</p>
+  {% elif user.is_staff == 1 %}
   <p>Privilegien: Admin</p>
   {% elif user.is_teacher == 1 %}
   <p>Privilegien: Sie sind eine Lehrkraft und haben "admin Rechte" über Schüler-Accounts; Ihre Posts werden als "von einer Lehrkraft" angezeigt.</p>
@@ -17,8 +25,12 @@
   {% else %}
   <p>Privilegien: Wegen Missbrauch dürfen Sie keine Hausaufgaben posten.</p>
   {% endif %}
+  {% if "windows" in device %}
+  <p>Gerät: Windows</p>
+  {% else %}
   <p>Gerät: {{ device }}</p>
+  {% endif %}
   <!-- Add more user data as needed -->
-
-  <a href="{% url 'logout' %}">Abmelden</a>
+<br><br>
+  <li><a href="{% url 'logout' %}" style="color: aliceblue;">Abmelden</a></li>
 {% endblock %}

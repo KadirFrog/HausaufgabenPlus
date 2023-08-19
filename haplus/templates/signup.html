@@ -1,4 +1,6 @@
-
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'maincss.css' %}">
+<link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
 <form method="post">
   <h2>Bei Hausaufgaben+ registrieren</h2>
   {% csrf_token %}
@@ -12,8 +14,8 @@
   {{ form.password1 }}<br>
   {{ form.password2.label_tag }}<br>
   {{ form.password2 }}<br><br>
-  <button type="submit">Account Erstellen</button>
+  <button type="submit" class="box-button">Account Erstellen</button>
 </form>
 <br>
-<p>Haben sie schon einnen Account?</p><a href="{% url 'login' %}"><button>Anmelden</button></a><br><br><br>
-<p>Sind sie ein/e Lehrer*in? <a href="{% url 'lehrerinfo' %}">Bitte hier clicken</a></p>
+<p>Haben sie schon einnen Account?  <a href="{% url 'login' %}" style="color: aliceblue;">Anmelden</a></p><br>
+<p>Sind sie ein/e Lehrer*in? <a href="{% url 'lehrerinfo' %}" style="color: aliceblue;">Bitte hier clicken</a></p>

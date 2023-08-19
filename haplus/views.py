@@ -77,7 +77,7 @@ def lehrerinfo(request):
 
 @login_required
 def control_panel(request):
-    if request.user.is_teacher:
+    if request.user.is_teacher or request.user.is_staff:
         # Get all users who are not admin
         users = CustomUser.objects.filter(is_superuser=False)
 
@@ -87,4 +87,4 @@ def control_panel(request):
         }
         return render(request, 'control_panel.html', context)
     else:
-        return redirect('home')  # Redirect to some other page if not a teacher
+        return render(request, 'control_panel.html')  # Redirect to some other page if not a teacher

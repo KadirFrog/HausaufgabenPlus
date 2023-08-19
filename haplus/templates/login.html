@@ -1,12 +1,16 @@
-
+{% load static %}
+<link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'maincss.css' %}">
 <form method="post">
   <h2>Bei Hausaufgaben+ anmelden</h2>
   {% csrf_token %}
   {{ form.username.label_tag }}
   {{ form.username }}
+  <br><br>
   {{ form.password.label_tag }}
   {{ form.password }}
-  <button type="submit">Anmelden</button>
+  <br><br>
+  <button type="submit" class="box-button" style="height: 20%;">Anmelden</button>
 </form>
 
   <br>

@@ -1,9 +1,10 @@
 <!DOCTYPE html>{% load static %}
 <html><link rel="stylesheet" type="text/css" href="{% static 'headercss.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'maincss.css' %}">
     {% block content %}
   {% include 'header.html' %}
 <head>
-    <title>Control Panel</title>
+    <title>Controlpanel</title>
     
 </head>
 <body>
@@ -41,7 +42,7 @@
         </tbody>
     </table>
     {% else %}
-    <p>You don't have access to this page.</p>
+    <p>Sie sind keine Lehrkraft.</p>
     {% endif %}
 </body>
 {% endblock %}
